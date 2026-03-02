@@ -1,4 +1,6 @@
 # main.py
+import os
+
 from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
@@ -17,8 +19,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 # 3️⃣ Load model at startup
-model = joblib.load("C:\\Users\\gandi\\OneDrive\\Desktop\\Medicine_Rec\\Doc_Med_Recommend\\Model\\specialist_rf_model.pkl")
+model = joblib.load(os.path.join(BASE_DIR, "Model", "specialist_rf_model.pkl"))
 print("Model loaded successfully!")
 
 class SymptomInput(BaseModel):
@@ -44,5 +48,3 @@ def predict(data: SymptomInput):
 
     return {"prediction": predicted_specialists, "scores": confidence_scores,"tablets": recommended_tablets}
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
