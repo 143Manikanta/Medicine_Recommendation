@@ -1,0 +1,12 @@
+.page-content {
+  padding-top: 64px; /* exact navbar height */
+  display: flex;
+  justify-content: center; 
+    border: 3px solid rgb(170, 168, 168);
+    align-items: flex-start; 
+    background-color: aquamarine;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
