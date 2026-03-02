@@ -43,3 +43,6 @@ def predict(data: SymptomInput):
 
 
     return {"prediction": predicted_specialists, "scores": confidence_scores,"tablets": recommended_tablets}
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
